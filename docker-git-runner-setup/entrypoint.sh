@@ -6,15 +6,19 @@ echo "Fixing permissions for /home/runner/_work..."
 mkdir -p /home/runner/_work
 chown -R runner:runner /home/runner/_work
 
-# Use REPO like "username/repo"
+# Use REPO like "org/repo"
+REPO="${ORG_NAME}/${REPO_NAME}"
+
 TOKEN_URL="https://api.github.com/repos/${REPO}/actions/runners/registration-token"
 
 echo "Requesting registration token for $REPO..."
+
 RUNNER_TOKEN=$(curl -s -X POST \
   -H "Authorization: token ${GITHUB_PAT}" \
   "${TOKEN_URL}" | jq -r .token)
 
 echo "Registering runner: $RUNNER_NAME"
+
 ./config.sh --unattended \
   --url "https://github.com/${REPO}" \
   --token "${RUNNER_TOKEN}" \
