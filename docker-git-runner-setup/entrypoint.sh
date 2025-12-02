@@ -7,7 +7,7 @@ mkdir -p /home/runner/_work
 chown -R runner:runner /home/runner/_work
 
 # Use REPO like "org/repo"
-REPO="${ORG_NAME}/${REPO_NAME}"
+REPO="${ORG}/${REPO}"
 
 TOKEN_URL="https://api.github.com/repos/${REPO}/actions/runners/registration-token"
 
