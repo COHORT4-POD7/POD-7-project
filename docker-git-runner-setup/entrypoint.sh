@@ -9,7 +9,7 @@ chown -R runner:runner /home/runner/_work
 # Use REPO like "org/repo"
 REPO="${ORG}/${REPO}"
 
-TOKEN_URL="https://api.github.com/repos/${REPO}/actions/runners/registration-token"
+TOKEN_URL="https://api.github.com/orgs/${REPO}/actions/runners/registration-token"
 
 echo "Requesting registration token for $REPO..."
 
@@ -20,7 +20,7 @@ RUNNER_TOKEN=$(curl -s -X POST \
 echo "Registering runner: $RUNNER_NAME"
 
 ./config.sh --unattended \
-  --url "https://github.com/${REPO}" \
+  --url "https://github.com/${ORG/REPO}" \
   --token "${RUNNER_TOKEN}" \
   --name "${RUNNER_NAME}" \
   --labels self-hosted,docker,terraform \
