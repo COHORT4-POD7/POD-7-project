@@ -11,7 +11,7 @@ REPO="${ORG}/${REPO}"
 
 TOKEN_URL="https://api.github.com/orgs/${REPO}/actions/runners/registration-token"
 
-echo "Requesting registration token for $REPO..."
+echo "Requesting registration token for $ORG/$REPO..."
 
 RUNNER_TOKEN=$(curl -s -X POST \
   -H "Authorization: token ${GITHUB_PAT}" \
